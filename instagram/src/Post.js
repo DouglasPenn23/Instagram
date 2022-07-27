@@ -18,7 +18,7 @@ function Post({ username, caption, imageUrl }) {
        {/* Header -> avatar + username */}
  
        {/* Image */}
-        <img className='post__image' src= {imageUrl} />
+        <img className='post__image' src= {imageUrl} alt="instagram Post"/>
  
        {/* username + caption */}
        <h4 className='post__text'><strong>{username}</strong> {caption} </h4>
