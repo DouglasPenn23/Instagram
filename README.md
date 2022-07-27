@@ -5,3 +5,4 @@ Commit Points
 29:26 - Working
 46:00 - Working
 57:39 - About to set up Firebase
+1:17:12 - Have Firebase connected
