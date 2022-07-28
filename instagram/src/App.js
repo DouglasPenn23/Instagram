@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
 import Modal from '@mui/material/Modal';
 import ImageUpload from './ImageUpload';
+import InstagramEmbed from 'react-instagram-embed';
 
 
 const style = {
@@ -185,16 +186,21 @@ function App() {
     )}
      </div>
 
+     <div className="app__posts">
+      {
+        posts.map(({id, post}) => (
+          <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
+      ))
+     }
+
+     </div>
+
     
     
 
      <h1>Hello party people lets make Instagram with React</h1>
 
-     {
-      posts.map(({id, post}) => (
-        <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
-      ))
-     }
+     
   {user?.displayName ? (
     <ImageUpload username= {user.displayName} />
   ):(
