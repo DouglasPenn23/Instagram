@@ -54,7 +54,7 @@ function App() {
     // Where the code actually runs
     // Conditions will go into []
     // onSnapshot is listener
-    db.collection('posts').onSnapshot(snapshot => {
+    db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
       // Everytime a post is made this code will fire
       setPosts(snapshot.docs.map(doc => ({
         id: doc.id,
@@ -90,14 +90,6 @@ function App() {
 
   return (
    <div className="app">
-  
-  {user?.displayName ? (
-    <ImageUpload username= {user.displayName} />
-  ):(
-    <h3>Sorry you need to login to upload</h3>
-  )} 
-  
-
     {/* Begins modal box */}
     <Modal
         open={open}
@@ -183,16 +175,17 @@ function App() {
        src="https://instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
        alt="Instagram logo"
        />
-     </div>
-
-    {user ? (
-      <Button onClick={() => auth.signOut()}>Logout</Button>
+      {user ? (
+        <Button onClick={() => auth.signOut()}>Logout</Button>
     ): (
       <div className='app__loginContainer'>
-      <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-      <Button onClick={() => setOpen(true)}>Sign Up</Button>
+        <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
+        <Button onClick={() => setOpen(true)}>Sign Up</Button>
       </div>
     )}
+     </div>
+
+    
     
 
      <h1>Hello party people lets make Instagram with React</h1>
@@ -202,6 +195,11 @@ function App() {
         <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
       ))
      }
+  {user?.displayName ? (
+    <ImageUpload username= {user.displayName} />
+  ):(
+    <h3>Sorry you need to login to upload</h3>
+  )} 
   
    </div>
  );
