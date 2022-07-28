@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
 import Modal from '@mui/material/Modal';
+import ImageUpload from './ImageUpload';
 
 
 const style = {
@@ -89,6 +90,14 @@ function App() {
 
   return (
    <div className="app">
+  
+  {user?.displayName ? (
+    <ImageUpload username= {user.displayName} />
+  ):(
+    <h3>Sorry you need to login to upload</h3>
+  )} 
+  
+
     {/* Begins modal box */}
     <Modal
         open={open}
