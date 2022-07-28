@@ -9,3 +9,4 @@ Commit Points
 1:25:21 - Prior to setting up User authentication
 1:36:13 - Not feeling well
 2:02:00 - Added feature to login & out
+2:10:00 - Working on Firebase storage

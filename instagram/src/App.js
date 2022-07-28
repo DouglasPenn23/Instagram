@@ -24,6 +24,7 @@ function App() {
   // This is an example of a hook
   const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
+  const [openSignIn, setOpenSignIn] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -70,7 +71,20 @@ function App() {
         displayName: username
       })
     })
-    .catch((error) => alert(error.message))
+    .catch((error) => alert(error.message));
+
+    setOpen(false);
+  }
+
+  const signIn = (event) => {
+    event.preventDefault();
+    
+    auth
+        .signInWithEmailAndPassword(email, password)
+        // Always good practice to add a catch
+        .catch((error) => alert(error.message))
+
+    setOpenSignIn(false);
   }
 
   return (
@@ -115,8 +129,44 @@ function App() {
           </form>
       </Box>
     </Modal>
- 
     
+
+    {/* Second Modal */}
+    <Modal
+        open={openSignIn}
+        // Everytime you click off the modal it will set it to false
+        onClose={() => setOpenSignIn(false)}
+      >
+      <Box sx={style}>
+        <form className='app__signup'>
+          {/* Instagram logo */}
+          <center>
+              <img
+                classname="app__headerImage"
+                src="https://instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
+                alt="Instagram logo"
+              />
+          </center>
+          {/* Input Fields for Form */}
+              <Input 
+                placeholder="email"
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Input 
+                placeholder="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Button type="submit" onClick={signIn}>Sign In</Button>
+        
+          </form>
+      </Box>
+    </Modal>
+
+
       {/* Begins header */}
      <div className='app__header'>
        <img
@@ -129,7 +179,10 @@ function App() {
     {user ? (
       <Button onClick={() => auth.signOut()}>Logout</Button>
     ): (
+      <div className='app__loginContainer'>
+      <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
       <Button onClick={() => setOpen(true)}>Sign Up</Button>
+      </div>
     )}
     
 
