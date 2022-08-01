@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
 import Modal from '@mui/material/Modal';
 import ImageUpload from './ImageUpload';
-import InstagramEmbed from 'react-instagram-embed';
+
 
 
 const style = {
@@ -187,11 +187,33 @@ function App() {
      </div>
 
      <div className="app__posts">
-      {
-        posts.map(({id, post}) => (
-          <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
-      ))
-     }
+      <div classname="app__postsLeft">
+          {
+            posts.map(({id, post}) => (
+              <Post key={id} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
+          ))
+        }
+      </div>
+
+      <div className="app__postsRight">
+        {/* This area would have the instagram-embed if it was live */}
+        <Post 
+            username="AnimalFacts"
+            caption="Domestic cows are one of the most common farm animals around the world, and the English language has several words 
+            to describe these animals at various ages. A baby cow is called a calf. A female calf is sometimes called a heifer calf and 
+            a male a bull calf. A heifer is a female that has not had any offspring. The term usually refers to immature females; 
+            after giving birth to her first calf, however, a heifer becomes a cow. An adult male is known as a bull. 
+            Many male cattle are castrated to reduce their aggressive tendencies and make them more tractable. 
+            Young neutered males, which are primarily raised for beef, are called steers or bullocks, 
+            whereas adult neutered males, which are usually used for draft purposes, are known as oxen. 
+            A group of cows, cattle, or kine (an archaic term for more than one cow) constitutes a herd. 
+            English lacks a gender-neutral singular form, and so “cow” is used for both female individuals and all domestic bovines.
+            "
+            imageUrl="https://th.bing.com/th/id/R.510ac3a6ab3593e25d43b42d7e479759?rik=3Qb0%2bcHCzm6eTQ&riu=http%3a%2f%2fwallsdesk.com%2fwp-content%2fuploads%2f2017%2f01%2fCow-Wallpapers-HD.jpg&ehk=WtX%2bLYYi5Dixd30C0OoOpd2vxU3cNFNzfNJYE2e8%2fTc%3d&risl=&pid=ImgRaw&r=0"
+
+        />
+      </div>
+      
 
      </div>
 
