@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './Post.css';
 import Avatar from '@mui/material/Avatar';
 // import Button from '@mui/material/Button';
-import { db } from './firebase';
+import { db } from  './firebase';
 import firebase from 'firebase/compat/app';
 
  
@@ -46,7 +46,7 @@ function Post({ postId, username, caption, imageUrl }) {
             username: username.displayName,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         });
-        setComment("");
+        setComment('');
     }
 
  return (
