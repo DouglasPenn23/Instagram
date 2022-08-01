@@ -217,16 +217,12 @@ function App() {
 
      </div>
 
-    
-    
-
-     <h1>Hello party people lets make Instagram with React</h1>
 
      
   {user?.displayName ? (
     <ImageUpload username= {user.displayName} />
   ):(
-    <h3>Sorry you need to login to upload</h3>
+    <h3 class="login_text">Sorry you need to login to upload</h3>
   )} 
   
    </div>

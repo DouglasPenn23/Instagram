@@ -36,4 +36,8 @@
    display: flex;
    flex-direction: column; 
  }
+
+ .login_text{
+  text-align: center;
+ }
  
